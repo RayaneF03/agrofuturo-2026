@@ -3,15 +3,16 @@
   --bg-primary: #f4f6f0;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
-  --bg-sidebar: #1a2e1a;
-  --bg-sidebar-hover: #243824;
+  --bg-tertiary: #f0f4ed;
+  --bg-sidebar: #ffffff;
+  --bg-sidebar-hover: #f0f4ed;
   --bg-input: #eef1ea;
 
   --text-primary: #0f1f0f;
   --text-secondary: #3d5c3d;
   --text-muted: #7a9e7a;
-  --text-sidebar: #c8ddc8;
-  --text-sidebar-active: #ffffff;
+  --text-sidebar: #3d5c3d;
+  --text-sidebar-active: #0f1f0f;
 
   --border: #d4e0d0;
   --border-light: #e8f0e4;
@@ -24,9 +25,9 @@
   --accent-blue: #2980b9;
   --accent-orange: #e67e22;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -35,9 +36,9 @@
   --sidebar-width: 240px;
   --header-height: 64px;
 
-  --font-display: 'Rajdhani', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: "Rajdhani", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
   --transition: 0.2s ease;
 }
@@ -46,6 +47,7 @@
   --bg-primary: #0a140a;
   --bg-secondary: #0f1f0f;
   --bg-card: #132013;
+  --bg-tertiary: #1a2a1a;
   --bg-sidebar: #060e06;
   --bg-sidebar-hover: #0f1f0f;
   --bg-input: #1a2e1a;
@@ -67,9 +69,9 @@
   --accent-blue: #4aa8e8;
   --accent-orange: #f39c44;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -78,12 +80,16 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   font-family: var(--font-body);
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: background var(--transition), color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 
 ::-webkit-scrollbar {
@@ -115,29 +121,59 @@ button {
 
 /* Animations */
 @keyframes pulse-ring {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(79,191,79,0.4); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(79,191,79,0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(79,191,79,0); }
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(79, 191, 79, 0.4);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(79, 191, 79, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(79, 191, 79, 0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes scanline {
-  0% { top: 0%; }
-  100% { top: 100%; }
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 .animate-fadeIn {
@@ -146,4 +182,15 @@ button {
 
 .animate-slideIn {
   animation: slideInLeft 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

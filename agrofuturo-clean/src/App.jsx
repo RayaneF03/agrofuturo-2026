@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import Dashboard from './pages/Dashboard'
-import Sensores from './pages/Sensores'
-import Mapa from './pages/Mapa'
-import Pragas from './pages/Pragas'
-import Insumos from './pages/Insumos'
-import Vendas from './pages/Vendas'
-import Configuracoes from './pages/Configuracoes'
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Dashboard from "./pages/Dashboard";
+import Sensores from "./pages/Sensores";
+import Mapa from "./pages/Mapa";
+import Pragas from "./pages/Pragas";
+import Insumos from "./pages/Insumos";
+import Vendas from "./pages/Vendas";
+import Configuracoes from "./pages/Configuracoes";
 
 export default function App() {
   return (
@@ -21,5 +21,5 @@ export default function App() {
         <Route path="configuracoes" element={<Configuracoes />} />
       </Route>
     </Routes>
-  )
+  );
 }
