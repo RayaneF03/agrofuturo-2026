@@ -30,18 +30,56 @@ import {
   Badge,
   ProgressBar,
 } from "../../components/ui";
-import DemoNotifications from "../../components/ui/DemoNotifications";
+import { useNotification } from "../../context/NotificationContext";
 
 export default function Dashboard() {
   const [stats, setStats] = useState(null);
   const [semanal, setSemanal] = useState([]);
   const [mapaField, setMapaField] = useState(null);
+  const { addNotification } = useNotification();
 
   useEffect(() => {
     api.getDashboardStats().then(setStats);
     api.getConsumoSemanal().then(setSemanal);
     api.getMapaField().then(setMapaField);
   }, []);
+
+  // Notificações automáticas do sistema
+  useEffect(() => {
+    const notifications = [
+      {
+        type: "success",
+        message: "Sensor #12 sincronizado com sucesso",
+        delay: 3000,
+      },
+      {
+        type: "warning",
+        message: "Nível de combustível da pulverizadora em 25%",
+        delay: 8000,
+      },
+      {
+        type: "info",
+        message: "Calibração de sensores concluída",
+        delay: 15000,
+      },
+      {
+        type: "success",
+        message: "Dados de pulverização foram salvos",
+        delay: 22000,
+      },
+    ];
+
+    const timers = notifications.map((notif) =>
+      setTimeout(() => {
+        addNotification({
+          type: notif.type,
+          message: notif.message,
+        });
+      }, notif.delay),
+    );
+
+    return () => timers.forEach(clearTimeout);
+  }, [addNotification]);
 
   if (!stats)
     return (
@@ -83,9 +121,6 @@ export default function Dashboard() {
       style={{ display: "flex", flexDirection: "column", gap: 24 }}
       className="animate-fadeIn"
     >
-      {/* Demo Notificações */}
-      <DemoNotifications />
-
       {/* Alert Banner */}
       <div
         style={{

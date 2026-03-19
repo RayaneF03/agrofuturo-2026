@@ -89,11 +89,19 @@ export default function Configuracoes() {
   });
 
   const handleSave = () => {
-    localStorage.setItem("agrofuturo-config", JSON.stringify(configs));
-    addNotification({
-      type: "success",
-      message: "Configurações salvas com sucesso!",
-    });
+    try {
+      localStorage.setItem("agrofuturo-config", JSON.stringify(configs));
+      addNotification({
+        type: "success",
+        message: "Configurações salvas com sucesso!",
+      });
+    } catch (error) {
+      console.error("Erro ao salvar configurações:", error);
+      addNotification({
+        type: "error",
+        message: "Erro ao salvar configurações",
+      });
+    }
   };
 
   const updateConfig = (key, value) => {
@@ -293,6 +301,22 @@ export default function Configuracoes() {
 
       <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
         <button
+          onClick={() => {
+            const saved = localStorage.getItem("agrofuturo-config");
+            if (saved) {
+              setConfigs(JSON.parse(saved));
+            } else {
+              setConfigs({
+                lerorsensor: "5s",
+                alertassensor: true,
+                autocalib: true,
+                pressaomax: 3.5,
+                velomax: 12,
+                paradoalerta: false,
+                apijwt: true,
+              });
+            }
+          }}
           style={{
             padding: "10px 20px",
             borderRadius: 8,
@@ -302,6 +326,13 @@ export default function Configuracoes() {
             fontSize: 13,
             fontWeight: 600,
             cursor: "pointer",
+            transition: "all var(--transition)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "var(--border)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "var(--bg-input)";
           }}
         >
           Cancelar
@@ -322,6 +353,17 @@ export default function Configuracoes() {
             display: "flex",
             alignItems: "center",
             gap: 6,
+            transition: "all var(--transition)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "var(--accent-green-dark)";
+            e.currentTarget.style.transform = "translateY(-2px)";
+            e.currentTarget.style.boxShadow = "0 4px 12px rgba(79,191,79,0.3)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "var(--accent-green)";
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "none";
           }}
         >
           <Save size={14} />

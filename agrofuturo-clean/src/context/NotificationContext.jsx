@@ -1,9 +1,34 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
 
 const NotificationContext = createContext();
 
 export function NotificationProvider({ children }) {
-  const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState(() => {
+    try {
+      const saved = localStorage.getItem("agrofuturo-notifications");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Salvar notificações no localStorage sempre que mudarem
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        "agrofuturo-notifications",
+        JSON.stringify(notifications),
+      );
+    } catch (error) {
+      console.error("Erro ao salvar notificações:", error);
+    }
+  }, [notifications]);
 
   const addNotification = useCallback((notification) => {
     const id = Date.now();
@@ -12,6 +37,7 @@ export function NotificationProvider({ children }) {
       type: "info",
       duration: 5000,
       ...notification,
+      createdAt: new Date().toISOString(),
     };
     setNotifications((prev) => [...prev, newNotification]);
 
