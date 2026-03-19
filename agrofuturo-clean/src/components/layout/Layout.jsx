@@ -1,27 +1,37 @@
-import { Outlet } from 'react-router-dom'
-import Sidebar from './Sidebar'
-import Header from './Header'
+import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
 
-export default function Layout() {
+export default function Layout({ onLogout }) {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-primary)' }}>
-      <Sidebar />
-      <div style={{
-        marginLeft: 'var(--sidebar-width)',
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-      }}>
-        <Header />
-        <main style={{
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        background: "var(--bg-primary)",
+      }}
+    >
+      <Sidebar onLogout={onLogout} />
+      <div
+        style={{
+          marginLeft: "var(--sidebar-width)",
           flex: 1,
-          padding: '24px',
-          overflowY: 'auto',
-        }}>
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
+      >
+        <Header />
+        <main
+          style={{
+            flex: 1,
+            padding: "24px",
+            overflowY: "auto",
+          }}
+        >
           <Outlet />
         </main>
       </div>
     </div>
-  )
+  );
 }
