@@ -10,12 +10,14 @@ import {
   ChevronRight,
   Tractor,
   LogOut,
+  Layers3,
 } from "lucide-react";
 
 const navItems = [
   { to: "/", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/sensores", icon: Cpu, label: "Sensores" },
   { to: "/mapa", icon: Map, label: "Mapa do Campo" },
+  { to: "/talhoes", icon: Layers3, label: "Talhões" },
   { to: "/pragas", icon: Bug, label: "Pragas" },
   { to: "/insumos", icon: Droplets, label: "Insumos" },
   { to: "/vendas", icon: ShoppingCart, label: "Vendas" },

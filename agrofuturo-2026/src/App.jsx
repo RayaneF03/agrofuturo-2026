@@ -4,6 +4,7 @@ import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Sensores from "./pages/Sensores";
 import Mapa from "./pages/Mapa";
+import Talhoes from "./pages/Talhoes";
 import Pragas from "./pages/Pragas";
 import Insumos from "./pages/Insumos";
 import Vendas from "./pages/Vendas";
@@ -56,10 +57,12 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="sensores" element={<Sensores />} />
           <Route path="mapa" element={<Mapa />} />
+          <Route path="talhoes" element={<Talhoes />} />
           <Route path="pragas" element={<Pragas />} />
           <Route path="insumos" element={<Insumos />} />
           <Route path="vendas" element={<Vendas />} />
           <Route path="configuracoes" element={<Configuracoes />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       ) : (
         <Route path="*" element={<Navigate to="/login" />} />

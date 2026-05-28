@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import SupportChatWidget from "../ui/SupportChatWidget";
 
 export default function Layout({ onLogout }) {
   return (
@@ -31,6 +32,7 @@ export default function Layout({ onLogout }) {
         >
           <Outlet />
         </main>
+        <SupportChatWidget />
       </div>
     </div>
   );
