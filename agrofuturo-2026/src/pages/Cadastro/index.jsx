@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Tractor } from "lucide-react";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const plans = [
   {
@@ -84,6 +85,7 @@ function PlanCard({ plan, selected, onSelect }) {
 }
 
 export default function Cadastro({ onRegister }) {
+  const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("basico");
   const [form, setForm] = useState({
@@ -108,32 +110,33 @@ export default function Cadastro({ onRegister }) {
     <div
       style={{
         minHeight: "100vh",
-        padding: 30,
+        padding: isMobile ? 12 : 30,
         background:
           "radial-gradient(circle at top, rgba(30,90,30,0.35), transparent 36%), linear-gradient(135deg, #040904 0%, #0c160c 50%, #101f10 100%)",
       }}
     >
       <div
         style={{
-          minHeight: "calc(100vh - 60px)",
+          minHeight: isMobile ? "calc(100vh - 24px)" : "calc(100vh - 60px)",
           border: "1px solid rgba(40, 160, 60, 0.9)",
           boxShadow: "0 0 0 1px rgba(0, 160, 255, 0.35)",
           background:
             "linear-gradient(90deg, rgba(7,15,7,0.98) 0%, rgba(16,30,16,0.98) 50%, rgba(17,33,17,0.98) 100%)",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
           overflow: "hidden",
         }}
       >
         <section
           style={{
-            padding: 28,
+            padding: isMobile ? 18 : 28,
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
             background:
               "linear-gradient(180deg, rgba(3,9,3,0.98), rgba(8,17,8,0.98))",
             color: "#eef9ee",
+            gap: 24,
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -179,7 +182,7 @@ export default function Cadastro({ onRegister }) {
             <h1
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: 42,
+                fontSize: isMobile ? 30 : 42,
                 lineHeight: 0.98,
                 letterSpacing: "0.03em",
                 color: "#f5fff5",
@@ -242,7 +245,7 @@ export default function Cadastro({ onRegister }) {
 
         <section
           style={{
-            padding: 28,
+            padding: isMobile ? 18 : 28,
             background:
               "linear-gradient(180deg, rgba(15,31,15,0.95), rgba(18,40,18,0.96))",
             color: "#edf8ed",
@@ -251,7 +254,7 @@ export default function Cadastro({ onRegister }) {
             justifyContent: "center",
           }}
         >
-          <div style={{ width: "100%", maxWidth: 355 }}>
+          <div style={{ width: "100%", maxWidth: isMobile ? 520 : 355 }}>
             <div
               style={{
                 display: "flex",
@@ -266,6 +269,7 @@ export default function Cadastro({ onRegister }) {
                   alignItems: "center",
                   gap: 8,
                   flex: 1,
+                  minWidth: 0,
                 }}
               >
                 <div
@@ -421,7 +425,9 @@ export default function Cadastro({ onRegister }) {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                    gridTemplateColumns: isMobile
+                      ? "1fr"
+                      : "repeat(3, minmax(0, 1fr))",
                     gap: 12,
                   }}
                 >

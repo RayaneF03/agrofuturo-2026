@@ -3,16 +3,21 @@ import { Card, SectionHeader } from "../../components/ui";
 import { useTheme } from "../../context/ThemeContext";
 import { useState, useEffect } from "react";
 import { useNotification } from "../../context/NotificationContext";
+import useIsMobile from "../../hooks/useIsMobile";
 
 function SettingRow({ label, description, children }) {
+  const isMobile = useIsMobile();
+
   return (
     <div
       style={{
         display: "flex",
+        flexDirection: isMobile ? "column" : "row",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: isMobile ? "stretch" : "center",
         padding: "14px 0",
         borderBottom: "1px solid var(--border-light)",
+        gap: isMobile ? 10 : 0,
       }}
     >
       <div>
@@ -70,6 +75,7 @@ function Toggle({ value, onChange }) {
 }
 
 export default function Configuracoes() {
+  const isMobile = useIsMobile();
   const { theme, toggleTheme } = useTheme();
   const { addNotification } = useNotification();
 
@@ -113,7 +119,13 @@ export default function Configuracoes() {
       style={{ display: "flex", flexDirection: "column", gap: 20 }}
       className="animate-fadeIn"
     >
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: 20,
+        }}
+      >
         {/* Aparência */}
         <Card style={{ padding: 20 }}>
           <SectionHeader
@@ -299,7 +311,14 @@ export default function Configuracoes() {
         </Card>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          justifyContent: "flex-end",
+          gap: 10,
+        }}
+      >
         <button
           onClick={() => {
             const saved = localStorage.getItem("agrofuturo-config");

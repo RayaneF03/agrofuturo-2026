@@ -26,8 +26,10 @@ import {
   ProgressBar,
 } from "../../components/ui";
 import CadastroModal from "../../components/ui/CadastroModal";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Insumos() {
+  const isMobile = useIsMobile();
   const [relatorio, setRelatorio] = useState(null);
   const [periodo, setPeriodo] = useState("7d");
   const [cadastroOpen, setCadastroOpen] = useState(false);
@@ -91,7 +93,12 @@ export default function Insumos() {
       style={{ display: "flex", flexDirection: "column", gap: 20 }}
       className="animate-fadeIn"
     >
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: isMobile ? "flex-start" : "flex-end",
+        }}
+      >
         <button
           onClick={() => setCadastroOpen(true)}
           style={{
@@ -118,7 +125,7 @@ export default function Insumos() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
           gap: 14,
         }}
       >
@@ -154,7 +161,14 @@ export default function Insumos() {
       </div>
 
       {/* Period filter */}
-      <div style={{ display: "flex", gap: 6 }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 6,
+          overflowX: isMobile ? "auto" : "visible",
+          paddingBottom: isMobile ? 4 : 0,
+        }}
+      >
         {[
           { key: "7d", label: "7 dias" },
           { key: "30d", label: "30 dias" },
@@ -255,7 +269,13 @@ export default function Insumos() {
       </Card>
 
       {/* Por Talhão */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: 16,
+        }}
+      >
         <Card style={{ padding: 20 }}>
           <SectionHeader
             title="Consumo por Talhão"

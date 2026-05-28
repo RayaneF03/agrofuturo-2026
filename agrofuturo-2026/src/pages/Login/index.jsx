@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, Tractor, Leaf } from "lucide-react";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Login({ onLogin }) {
+  const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [form, setForm] = useState({ email: "", senha: "" });
@@ -32,57 +34,65 @@ export default function Login({ onLogin }) {
   return (
     <div style={styles.page}>
       {/* Painel esquerdo — visual */}
-      <div style={styles.left}>
-        <div style={styles.leftInner}>
-          <div style={styles.logoArea}>
-            <div style={styles.logoIcon}>
-              <Tractor size={28} color="#fff" />
-            </div>
-            <div>
-              <div style={styles.logoTitle}>AgroFuturo</div>
-              <div style={styles.logoSub}>
-                Sistema de Pulverização de Precisão
+      {!isMobile && (
+        <div style={styles.left}>
+          <div style={styles.leftInner}>
+            <div style={styles.logoArea}>
+              <div style={styles.logoIcon}>
+                <Tractor size={28} color="#fff" />
+              </div>
+              <div>
+                <div style={styles.logoTitle}>AgroFuturo</div>
+                <div style={styles.logoSub}>
+                  Sistema de Pulverização de Precisão
+                </div>
               </div>
             </div>
-          </div>
 
-          <div style={styles.heroText}>
-            <h2 style={styles.heroH2}>
-              Agricultura de
-              <br />
-              precisão ao seu alcance
-            </h2>
-            <p style={styles.heroP}>
-              Monitore seus sensores, detecte pragas e controle o consumo de
-              insumos em tempo real — direto do campo.
-            </p>
-          </div>
+            <div style={styles.heroText}>
+              <h2 style={styles.heroH2}>
+                Agricultura de
+                <br />
+                precisão ao seu alcance
+              </h2>
+              <p style={styles.heroP}>
+                Monitore seus sensores, detecte pragas e controle o consumo de
+                insumos em tempo real — direto do campo.
+              </p>
+            </div>
 
-          <div style={styles.stats}>
-            {[
-              { value: "24", label: "Sensores ativos" },
-              { value: "94%", label: "Eficiência média" },
-              { value: "22%", label: "Economia de insumo" },
-            ].map((s, i) => (
-              <div key={i} style={styles.statItem}>
-                <div style={styles.statValue}>{s.value}</div>
-                <div style={styles.statLabel}>{s.label}</div>
-              </div>
-            ))}
-          </div>
+            <div style={styles.stats}>
+              {[
+                { value: "24", label: "Sensores ativos" },
+                { value: "94%", label: "Eficiência média" },
+                { value: "22%", label: "Economia de insumo" },
+              ].map((s, i) => (
+                <div key={i} style={styles.statItem}>
+                  <div style={styles.statValue}>{s.value}</div>
+                  <div style={styles.statLabel}>{s.label}</div>
+                </div>
+              ))}
+            </div>
 
-          {/* Decoração */}
-          <div style={styles.decoBall1} />
-          <div style={styles.decoBall2} />
-          <div style={styles.decoLeaf}>
-            <Leaf size={160} color="rgba(255,255,255,0.04)" strokeWidth={1} />
+            {/* Decoração */}
+            <div style={styles.decoBall1} />
+            <div style={styles.decoBall2} />
+            <div style={styles.decoLeaf}>
+              <Leaf size={160} color="rgba(255,255,255,0.04)" strokeWidth={1} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Painel direito — formulário */}
-      <div style={styles.right}>
-        <div style={styles.formBox}>
+      <div
+        style={{
+          ...styles.right,
+          padding: isMobile ? "28px 16px" : styles.right.padding,
+          minHeight: isMobile ? "100vh" : undefined,
+        }}
+      >
+        <div style={{ ...styles.formBox, maxWidth: isMobile ? 440 : 400 }}>
           <div style={{ marginBottom: 32 }}>
             <h1 style={styles.formTitle}>Bem-vindo de volta</h1>
             <p style={styles.formSub}>

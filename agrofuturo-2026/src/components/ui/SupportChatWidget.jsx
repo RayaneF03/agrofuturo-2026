@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Bot, MessageCircle, SendHorizontal, UserRound } from "lucide-react";
 import Dialog from "./Dialog";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const suggestedReplies = [
   {
@@ -26,6 +27,7 @@ function makeReply(message) {
 }
 
 export default function SupportChatWidget() {
+  const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState([
@@ -76,11 +78,11 @@ export default function SupportChatWidget() {
         aria-label="Abrir chat de suporte"
         style={{
           position: "fixed",
-          right: 24,
-          bottom: 24,
+          right: isMobile ? 16 : 24,
+          bottom: isMobile ? 16 : 24,
           zIndex: 1900,
-          width: 60,
-          height: 60,
+          width: isMobile ? 52 : 60,
+          height: isMobile ? 52 : 60,
           borderRadius: "50%",
           border: "1px solid rgba(255,255,255,0.16)",
           background:
@@ -205,7 +207,11 @@ export default function SupportChatWidget() {
               event.preventDefault();
               sendMessage(draft);
             }}
-            style={{ display: "flex", gap: 8 }}
+            style={{
+              display: "flex",
+              gap: 8,
+              flexDirection: isMobile ? "column" : "row",
+            }}
           >
             <input
               value={draft}
@@ -225,8 +231,8 @@ export default function SupportChatWidget() {
             <button
               type="submit"
               style={{
-                width: 48,
-                minWidth: 48,
+                width: isMobile ? "100%" : 48,
+                minWidth: isMobile ? "100%" : 48,
                 borderRadius: 12,
                 border: "1px solid transparent",
                 background: "var(--accent-green)",

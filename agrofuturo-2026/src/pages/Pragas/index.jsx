@@ -10,6 +10,7 @@ import {
 import { api } from "../../services/api";
 import { Card, Badge, SectionHeader } from "../../components/ui";
 import CadastroModal from "../../components/ui/CadastroModal";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const severidadeConfig = {
   alta: { variant: "danger", label: "Alta", color: "var(--accent-red)" },
@@ -18,6 +19,7 @@ const severidadeConfig = {
 };
 
 export default function Pragas() {
+  const isMobile = useIsMobile();
   const [pragas, setPragas] = useState([]);
   const [filtro, setFiltro] = useState("todas");
   const [selected, setSelected] = useState(null);
@@ -74,7 +76,12 @@ export default function Pragas() {
       style={{ display: "flex", flexDirection: "column", gap: 20 }}
       className="animate-fadeIn"
     >
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: isMobile ? "flex-start" : "flex-end",
+        }}
+      >
         <button
           onClick={() => setCadastroOpen(true)}
           style={{
@@ -101,7 +108,7 @@ export default function Pragas() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
           gap: 12,
         }}
       >
@@ -140,7 +147,14 @@ export default function Pragas() {
       </div>
 
       {/* Filter */}
-      <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 6,
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
         <Filter size={14} color="var(--text-muted)" />
         {[
           { key: "todas", label: "Todas" },
@@ -169,7 +183,11 @@ export default function Pragas() {
       </div>
 
       <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 16 }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 380px",
+          gap: 16,
+        }}
       >
         {/* List */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -274,7 +292,7 @@ export default function Pragas() {
 
         {/* Detail Panel */}
         {selected && (
-          <div style={{ position: "sticky", top: 24 }}>
+          <div style={{ position: isMobile ? "static" : "sticky", top: 24 }}>
             <Card style={{ padding: 22 }}>
               <SectionHeader title="Detalhes da Praga" />
               <div style={{ textAlign: "center", marginBottom: 20 }}>

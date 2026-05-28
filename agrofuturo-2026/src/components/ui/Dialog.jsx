@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Dialog({
   open,
@@ -10,6 +11,8 @@ export default function Dialog({
   onClose,
   maxWidth = 760,
 }) {
+  const isMobile = useIsMobile();
+
   useEffect(() => {
     if (!open) return;
 
@@ -35,19 +38,19 @@ export default function Dialog({
         background: "rgba(7, 16, 7, 0.72)",
         backdropFilter: "blur(8px)",
         display: "flex",
-        alignItems: "center",
+        alignItems: isMobile ? "stretch" : "center",
         justifyContent: "center",
-        padding: 16,
+        padding: isMobile ? 8 : 16,
       }}
     >
       <div
         style={{
-          width: `min(${maxWidth}px, calc(100vw - 32px))`,
-          maxHeight: "calc(100vh - 32px)",
+          width: isMobile ? "100%" : `min(${maxWidth}px, calc(100vw - 32px))`,
+          maxHeight: isMobile ? "calc(100vh - 16px)" : "calc(100vh - 32px)",
           overflow: "hidden",
           background: "var(--bg-card)",
           border: "1px solid var(--border)",
-          borderRadius: "20px",
+          borderRadius: isMobile ? "16px" : "20px",
           boxShadow: "var(--shadow-lg)",
           display: "flex",
           flexDirection: "column",
@@ -55,19 +58,20 @@ export default function Dialog({
       >
         <div
           style={{
-            padding: "18px 20px",
+            padding: isMobile ? "14px 16px" : "18px 20px",
             borderBottom: "1px solid var(--border-light)",
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "flex-start",
+            alignItems: isMobile ? "flex-start" : "center",
             gap: 16,
+            flexWrap: isMobile ? "wrap" : "nowrap",
           }}
         >
           <div>
             <h3
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: 18,
+                fontSize: isMobile ? 16 : 18,
                 fontWeight: 700,
                 color: "var(--text-primary)",
                 letterSpacing: "0.04em",
@@ -101,6 +105,7 @@ export default function Dialog({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              flexShrink: 0,
             }}
             aria-label="Fechar"
             title="Fechar"
@@ -109,12 +114,14 @@ export default function Dialog({
           </button>
         </div>
 
-        <div style={{ padding: 20, overflowY: "auto" }}>{children}</div>
+        <div style={{ padding: isMobile ? 16 : 20, overflowY: "auto" }}>
+          {children}
+        </div>
 
         {footer && (
           <div
             style={{
-              padding: "16px 20px",
+              padding: isMobile ? "14px 16px" : "16px 20px",
               borderTop: "1px solid var(--border-light)",
             }}
           >

@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
-import { Sun, Moon, RefreshCw } from "lucide-react";
+import { Sun, Moon, RefreshCw, Menu } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 import NotificationDropdown from "../ui/NotificationDropdown";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const titles = {
   "/": "Dashboard",
@@ -23,9 +24,10 @@ const subtitles = {
   "/configuracoes": "Parâmetros do sistema e da pulverizadora",
 };
 
-export default function Header() {
+export default function Header({ onMenuClick }) {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+  const isMobile = useIsMobile();
   const title = titles[location.pathname] || "AgroFuturo";
   const subtitle = subtitles[location.pathname] || "";
 
@@ -40,55 +42,90 @@ export default function Header() {
   return (
     <header
       style={{
-        height: "var(--header-height)",
+        minHeight: "var(--header-height)",
         background: "var(--bg-secondary)",
         borderBottom: "1px solid var(--border)",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 24px",
+        padding: isMobile ? "10px 12px" : "0 24px",
         position: "sticky",
         top: 0,
         zIndex: 50,
         backdropFilter: "blur(12px)",
+        gap: 12,
       }}
     >
-      <div>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: 20,
-            fontWeight: 700,
-            letterSpacing: "0.04em",
-            color: "var(--text-primary)",
-            lineHeight: 1.1,
-          }}
-        >
-          {title}
-        </h1>
-        <p
-          style={{
-            fontSize: 11,
-            color: "var(--text-muted)",
-            marginTop: 2,
-            letterSpacing: "0.02em",
-          }}
-        >
-          {subtitle}
-        </p>
+      <div
+        style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}
+      >
+        {isMobile && (
+          <button
+            type="button"
+            onClick={onMenuClick}
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "var(--bg-input)",
+              color: "var(--text-secondary)",
+              border: "1px solid var(--border)",
+              flexShrink: 0,
+            }}
+            aria-label="Abrir menu"
+            title="Abrir menu"
+          >
+            <Menu size={16} />
+          </button>
+        )}
+
+        <div style={{ minWidth: 0 }}>
+          <h1
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: isMobile ? 16 : 20,
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              color: "var(--text-primary)",
+              lineHeight: 1.1,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {title}
+          </h1>
+          {!isMobile && (
+            <p
+              style={{
+                fontSize: 11,
+                color: "var(--text-muted)",
+                marginTop: 2,
+                letterSpacing: "0.02em",
+              }}
+            >
+              {subtitle}
+            </p>
+          )}
+        </div>
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-        <span
-          style={{
-            fontSize: 11,
-            color: "var(--text-muted)",
-            fontFamily: "var(--font-mono)",
-            marginRight: 8,
-          }}
-        >
-          {now}
-        </span>
+        {!isMobile && (
+          <span
+            style={{
+              fontSize: 11,
+              color: "var(--text-muted)",
+              fontFamily: "var(--font-mono)",
+              marginRight: 8,
+            }}
+          >
+            {now}
+          </span>
+        )}
 
         <button
           onClick={() => window.location.reload()}

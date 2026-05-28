@@ -27,8 +27,10 @@ import {
   Badge,
 } from "../../components/ui";
 import CadastroModal from "../../components/ui/CadastroModal";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Vendas() {
+  const isMobile = useIsMobile();
   const [vendas, setVendas] = useState(null);
   const [cadastroOpen, setCadastroOpen] = useState(false);
 
@@ -83,7 +85,12 @@ export default function Vendas() {
       style={{ display: "flex", flexDirection: "column", gap: 20 }}
       className="animate-fadeIn"
     >
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: isMobile ? "flex-start" : "flex-end",
+        }}
+      >
         <button
           onClick={() => setCadastroOpen(true)}
           style={{
@@ -110,7 +117,7 @@ export default function Vendas() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
           gap: 14,
         }}
       >
@@ -148,9 +155,11 @@ export default function Vendas() {
         <div
           style={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row",
             justifyContent: "space-between",
             alignItems: "center",
             marginBottom: 12,
+            gap: 8,
           }}
         >
           <div>
@@ -207,7 +216,13 @@ export default function Vendas() {
       </Card>
 
       {/* Charts */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: 16,
+        }}
+      >
         <Card style={{ padding: 20 }}>
           <SectionHeader title="Receita por Mês" subtitle="Últimos 6 meses" />
           <ResponsiveContainer width="100%" height={220}>

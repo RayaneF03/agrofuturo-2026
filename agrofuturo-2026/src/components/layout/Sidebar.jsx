@@ -11,6 +11,7 @@ import {
   Tractor,
   LogOut,
 } from "lucide-react";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const navItems = [
   { to: "/", icon: LayoutDashboard, label: "Dashboard" },
@@ -122,7 +123,9 @@ const styles = {
   },
 };
 
-export default function Sidebar({ onLogout }) {
+export default function Sidebar({ onLogout, mobileOpen = false, onClose }) {
+  const isMobile = useIsMobile();
+
   const handleLogout = () => {
     localStorage.removeItem("agrofuturo-auth");
     localStorage.removeItem("agrofuturo-config");
@@ -130,7 +133,43 @@ export default function Sidebar({ onLogout }) {
   };
 
   return (
-    <aside style={styles.sidebar}>
+    <aside
+      style={{
+        ...styles.sidebar,
+        transform: isMobile
+          ? mobileOpen
+            ? "translateX(0)"
+            : "translateX(-100%)"
+          : "none",
+        transition: "transform 0.25s ease",
+        width: isMobile
+          ? "min(86vw, var(--sidebar-width))"
+          : "var(--sidebar-width)",
+      }}
+    >
+      {isMobile && (
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fechar menu"
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            width: 32,
+            height: 32,
+            borderRadius: 8,
+            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(255,255,255,0.04)",
+            color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          ×
+        </button>
+      )}
       <div style={styles.logo}>
         <div style={styles.logoInner}>
           <div style={styles.logoIcon}>
@@ -150,6 +189,7 @@ export default function Sidebar({ onLogout }) {
             key={to}
             to={to}
             end={to === "/"}
+            onClick={isMobile ? onClose : undefined}
             style={({ isActive }) => ({
               display: "flex",
               alignItems: "center",
@@ -183,6 +223,7 @@ export default function Sidebar({ onLogout }) {
         <div style={styles.navLabel}>Sistema</div>
         <NavLink
           to="/configuracoes"
+          onClick={isMobile ? onClose : undefined}
           style={({ isActive }) => ({
             display: "flex",
             alignItems: "center",

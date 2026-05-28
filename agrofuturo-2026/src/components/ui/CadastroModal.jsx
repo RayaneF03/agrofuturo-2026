@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Dialog from "./Dialog";
+import useIsMobile from "../../hooks/useIsMobile";
 
 function buildInitialState(fields, initialValues = {}) {
   return fields.reduce((acc, field) => {
@@ -109,6 +110,7 @@ export default function CadastroModal({
   onClose,
   onSubmit,
 }) {
+  const isMobile = useIsMobile();
   const memoizedInitial = useMemo(
     () => buildInitialState(fields, initialValues),
     [fields, initialValues],
@@ -136,7 +138,14 @@ export default function CadastroModal({
       onClose={onClose}
       maxWidth={820}
       footer={
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column-reverse" : "row",
+            justifyContent: "flex-end",
+            gap: 10,
+          }}
+        >
           <button
             type="button"
             onClick={onClose}
@@ -176,7 +185,9 @@ export default function CadastroModal({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gridTemplateColumns: isMobile
+              ? "1fr"
+              : "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 14,
           }}
         >

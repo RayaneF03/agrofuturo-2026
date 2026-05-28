@@ -31,8 +31,10 @@ import {
   ProgressBar,
 } from "../../components/ui";
 import { useNotification } from "../../context/NotificationContext";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Dashboard() {
+  const isMobile = useIsMobile();
   const [stats, setStats] = useState(null);
   const [semanal, setSemanal] = useState([]);
   const [mapaField, setMapaField] = useState(null);
@@ -129,7 +131,8 @@ export default function Dashboard() {
           borderRadius: "var(--radius-md)",
           padding: "12px 16px",
           display: "flex",
-          alignItems: "center",
+          alignItems: isMobile ? "flex-start" : "center",
+          flexDirection: isMobile ? "column" : "row",
           gap: 10,
         }}
       >
@@ -146,7 +149,7 @@ export default function Dashboard() {
         </span>
         <span
           style={{
-            marginLeft: "auto",
+            marginLeft: isMobile ? 0 : "auto",
             fontSize: 11,
             color: "var(--accent-yellow)",
             cursor: "pointer",
@@ -161,7 +164,9 @@ export default function Dashboard() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : "repeat(auto-fill, minmax(180px, 1fr))",
           gap: 14,
         }}
       >
@@ -212,7 +217,13 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Row */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: 16,
+        }}
+      >
         <Card style={{ padding: 20 }}>
           <SectionHeader
             title="Consumo de Insumo"
@@ -302,7 +313,11 @@ export default function Dashboard() {
 
       {/* Talhões status + Sensor Live */}
       <div
-        style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 16 }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1.2fr 1fr",
+          gap: 16,
+        }}
       >
         <Card style={{ padding: 20 }}>
           <SectionHeader
