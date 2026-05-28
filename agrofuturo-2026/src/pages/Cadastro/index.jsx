@@ -3,9 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Tractor } from "lucide-react";
 
 const plans = [
-  { id: "basico", title: "Básico", subtitle: "Até 12 sensores", price: "R$ 290/mês" },
+  {
+    id: "basico",
+    title: "Básico",
+    subtitle: "Até 12 sensores",
+    price: "R$ 290/mês",
+  },
   { id: "pro", title: "Pro", subtitle: "Até 24 sensores", price: "R$ 490/mês" },
-  { id: "enterprise", title: "Enterprise", subtitle: "Sensores ilimitados", price: "sob consulta" },
+  {
+    id: "enterprise",
+    title: "Enterprise",
+    subtitle: "Sensores ilimitados",
+    price: "sob consulta",
+  },
 ];
 
 const benefits = [
@@ -41,14 +51,34 @@ function PlanCard({ plan, selected, onSelect }) {
         padding: "14px 12px",
         borderRadius: 10,
         border: `1px solid ${isActive ? "rgba(79,191,79,0.7)" : "rgba(66, 120, 66, 0.45)"}`,
-        background: isActive ? "rgba(79,191,79,0.08)" : "rgba(20, 34, 20, 0.52)",
+        background: isActive
+          ? "rgba(79,191,79,0.08)"
+          : "rgba(20, 34, 20, 0.52)",
         color: "#edf8ed",
         boxShadow: isActive ? "0 0 0 1px rgba(79,191,79,0.18)" : "none",
       }}
     >
-      <div style={{ fontSize: 14, color: "#f5fff5", fontWeight: 500 }}>{plan.title}</div>
-      <div style={{ marginTop: 4, fontSize: 11, color: "rgba(136, 188, 136, 0.92)" }}>{plan.subtitle}</div>
-      <div style={{ marginTop: 8, fontSize: 12, color: "rgba(136, 188, 136, 0.82)" }}>{plan.price}</div>
+      <div style={{ fontSize: 14, color: "#f5fff5", fontWeight: 500 }}>
+        {plan.title}
+      </div>
+      <div
+        style={{
+          marginTop: 4,
+          fontSize: 11,
+          color: "rgba(136, 188, 136, 0.92)",
+        }}
+      >
+        {plan.subtitle}
+      </div>
+      <div
+        style={{
+          marginTop: 8,
+          fontSize: 12,
+          color: "rgba(136, 188, 136, 0.82)",
+        }}
+      >
+        {plan.price}
+      </div>
     </button>
   );
 }
@@ -56,7 +86,12 @@ function PlanCard({ plan, selected, onSelect }) {
 export default function Cadastro({ onRegister }) {
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("basico");
-  const [form, setForm] = useState({ nome: "", empresa: "", email: "", telefone: "" });
+  const [form, setForm] = useState({
+    nome: "",
+    empresa: "",
+    email: "",
+    telefone: "",
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -74,7 +109,8 @@ export default function Cadastro({ onRegister }) {
       style={{
         minHeight: "100vh",
         padding: 30,
-        background: "radial-gradient(circle at top, rgba(30,90,30,0.35), transparent 36%), linear-gradient(135deg, #040904 0%, #0c160c 50%, #101f10 100%)",
+        background:
+          "radial-gradient(circle at top, rgba(30,90,30,0.35), transparent 36%), linear-gradient(135deg, #040904 0%, #0c160c 50%, #101f10 100%)",
       }}
     >
       <div
@@ -82,7 +118,8 @@ export default function Cadastro({ onRegister }) {
           minHeight: "calc(100vh - 60px)",
           border: "1px solid rgba(40, 160, 60, 0.9)",
           boxShadow: "0 0 0 1px rgba(0, 160, 255, 0.35)",
-          background: "linear-gradient(90deg, rgba(7,15,7,0.98) 0%, rgba(16,30,16,0.98) 50%, rgba(17,33,17,0.98) 100%)",
+          background:
+            "linear-gradient(90deg, rgba(7,15,7,0.98) 0%, rgba(16,30,16,0.98) 50%, rgba(17,33,17,0.98) 100%)",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           overflow: "hidden",
@@ -94,7 +131,8 @@ export default function Cadastro({ onRegister }) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            background: "linear-gradient(180deg, rgba(3,9,3,0.98), rgba(8,17,8,0.98))",
+            background:
+              "linear-gradient(180deg, rgba(3,9,3,0.98), rgba(8,17,8,0.98))",
             color: "#eef9ee",
           }}
         >
@@ -114,26 +152,86 @@ export default function Cadastro({ onRegister }) {
               <Tractor size={22} />
             </div>
             <div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 800, letterSpacing: "0.08em" }}>AGROFUTURO</div>
-              <div style={{ marginTop: 2, fontSize: 11, letterSpacing: "0.24em", color: "rgba(126, 178, 126, 0.72)" }}>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 26,
+                  fontWeight: 800,
+                  letterSpacing: "0.08em",
+                }}
+              >
+                AGROFUTURO
+              </div>
+              <div
+                style={{
+                  marginTop: 2,
+                  fontSize: 11,
+                  letterSpacing: "0.24em",
+                  color: "rgba(126, 178, 126, 0.72)",
+                }}
+              >
                 SISTEMA DE PULVERIZAÇÃO DE PRECISÃO
               </div>
             </div>
           </div>
 
           <div style={{ maxWidth: 420, paddingLeft: 18, marginTop: -20 }}>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: 42, lineHeight: 0.98, letterSpacing: "0.03em", color: "#f5fff5" }}>
+            <h1
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 42,
+                lineHeight: 0.98,
+                letterSpacing: "0.03em",
+                color: "#f5fff5",
+              }}
+            >
               Comece a monitorar sua lavoura hoje
             </h1>
-            <p style={{ marginTop: 10, maxWidth: 360, fontSize: 14, lineHeight: 1.55, color: "rgba(177, 221, 177, 0.92)" }}>
-              Configure sua conta em menos de 2 minutos e tenha acesso completo ao painel de sensores, pragas e relatórios de insumos.
+            <p
+              style={{
+                marginTop: 10,
+                maxWidth: 360,
+                fontSize: 14,
+                lineHeight: 1.55,
+                color: "rgba(177, 221, 177, 0.92)",
+              }}
+            >
+              Configure sua conta em menos de 2 minutos e tenha acesso completo
+              ao painel de sensores, pragas e relatórios de insumos.
             </p>
           </div>
 
-          <div style={{ display: "grid", gap: 10, maxWidth: 390, paddingLeft: 18, marginBottom: 6 }}>
+          <div
+            style={{
+              display: "grid",
+              gap: 10,
+              maxWidth: 390,
+              paddingLeft: 18,
+              marginBottom: 6,
+            }}
+          >
             {benefits.map((benefit) => (
-              <div key={benefit} style={{ display: "flex", alignItems: "center", gap: 10, color: "rgba(224, 245, 224, 0.88)", fontSize: 12 }}>
-                <span style={{ width: 20, height: 20, borderRadius: 999, border: "1px solid rgba(79,191,79,0.85)", display: "grid", placeItems: "center", color: "#62d35f" }}>
+              <div
+                key={benefit}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  color: "rgba(224, 245, 224, 0.88)",
+                  fontSize: 12,
+                }}
+              >
+                <span
+                  style={{
+                    width: 20,
+                    height: 20,
+                    borderRadius: 999,
+                    border: "1px solid rgba(79,191,79,0.85)",
+                    display: "grid",
+                    placeItems: "center",
+                    color: "#62d35f",
+                  }}
+                >
                   <CheckCircle2 size={13} />
                 </span>
                 {benefit}
@@ -145,7 +243,8 @@ export default function Cadastro({ onRegister }) {
         <section
           style={{
             padding: 28,
-            background: "linear-gradient(180deg, rgba(15,31,15,0.95), rgba(18,40,18,0.96))",
+            background:
+              "linear-gradient(180deg, rgba(15,31,15,0.95), rgba(18,40,18,0.96))",
             color: "#edf8ed",
             display: "flex",
             alignItems: "center",
@@ -153,49 +252,186 @@ export default function Cadastro({ onRegister }) {
           }}
         >
           <div style={{ width: "100%", maxWidth: 355 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
-                <div style={{ width: 34, height: 34, borderRadius: 999, display: "grid", placeItems: "center", background: "#5fbd4f", color: "#fff", fontSize: 12, fontWeight: 700 }}>1</div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                marginBottom: 28,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  flex: 1,
+                }}
+              >
+                <div
+                  style={{
+                    width: 34,
+                    height: 34,
+                    borderRadius: 999,
+                    display: "grid",
+                    placeItems: "center",
+                    background: "#5fbd4f",
+                    color: "#fff",
+                    fontSize: 12,
+                    fontWeight: 700,
+                  }}
+                >
+                  1
+                </div>
                 <div style={{ fontSize: 14, color: "#f4fff4" }}>Dados</div>
-                <div style={{ height: 1, flex: 1, background: "rgba(116, 163, 116, 0.2)" }} />
+                <div
+                  style={{
+                    height: 1,
+                    flex: 1,
+                    background: "rgba(116, 163, 116, 0.2)",
+                  }}
+                />
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, opacity: 0.7 }}>
-                <div style={{ width: 34, height: 34, borderRadius: 999, display: "grid", placeItems: "center", background: "rgba(255,255,255,0.12)", color: "#fff", fontSize: 12, fontWeight: 700 }}>2</div>
-                <div style={{ fontSize: 14, color: "rgba(230,240,230,0.55)" }}>Acesso</div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  opacity: 0.7,
+                }}
+              >
+                <div
+                  style={{
+                    width: 34,
+                    height: 34,
+                    borderRadius: 999,
+                    display: "grid",
+                    placeItems: "center",
+                    background: "rgba(255,255,255,0.12)",
+                    color: "#fff",
+                    fontSize: 12,
+                    fontWeight: 700,
+                  }}
+                >
+                  2
+                </div>
+                <div style={{ fontSize: 14, color: "rgba(230,240,230,0.55)" }}>
+                  Acesso
+                </div>
               </div>
             </div>
 
             <div>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 34, lineHeight: 1, fontWeight: 800, color: "#f7fff7" }}>Criar Conta</h2>
-              <p style={{ marginTop: 8, fontSize: 13, color: "rgba(173, 218, 173, 0.95)" }}>Preencha todos os seus dados, para continuar</p>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 34,
+                  lineHeight: 1,
+                  fontWeight: 800,
+                  color: "#f7fff7",
+                }}
+              >
+                Criar Conta
+              </h2>
+              <p
+                style={{
+                  marginTop: 8,
+                  fontSize: 13,
+                  color: "rgba(173, 218, 173, 0.95)",
+                }}
+              >
+                Preencha todos os seus dados, para continuar
+              </p>
             </div>
 
-            <form onSubmit={handleSubmit} style={{ marginTop: 28, display: "grid", gap: 14 }}>
+            <form
+              onSubmit={handleSubmit}
+              style={{ marginTop: 28, display: "grid", gap: 14 }}
+            >
               <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}>Nome Completo <span style={{ color: "#ff6d6d" }}>*</span></span>
-                <input name="nome" value={form.nome} onChange={handleChange} style={inputStyle} />
+                <span
+                  style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}
+                >
+                  Nome Completo <span style={{ color: "#ff6d6d" }}>*</span>
+                </span>
+                <input
+                  name="nome"
+                  value={form.nome}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
               </label>
 
               <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}>Empresa / Fazenda <span style={{ color: "#ff6d6d" }}>*</span></span>
-                <input name="empresa" value={form.empresa} onChange={handleChange} style={inputStyle} />
+                <span
+                  style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}
+                >
+                  Empresa / Fazenda <span style={{ color: "#ff6d6d" }}>*</span>
+                </span>
+                <input
+                  name="empresa"
+                  value={form.empresa}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
               </label>
 
               <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}>E-mail <span style={{ color: "#ff6d6d" }}>*</span></span>
-                <input name="email" type="email" value={form.email} onChange={handleChange} style={inputStyle} />
+                <span
+                  style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}
+                >
+                  E-mail <span style={{ color: "#ff6d6d" }}>*</span>
+                </span>
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
               </label>
 
               <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}>Telefone <span style={{ color: "rgba(186,230,186,0.6)" }}>(opcional)</span></span>
-                <input name="telefone" value={form.telefone} onChange={handleChange} style={inputStyle} />
+                <span
+                  style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)" }}
+                >
+                  Telefone{" "}
+                  <span style={{ color: "rgba(186,230,186,0.6)" }}>
+                    (opcional)
+                  </span>
+                </span>
+                <input
+                  name="telefone"
+                  value={form.telefone}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
               </label>
 
               <div style={{ marginTop: 4 }}>
-                <div style={{ fontSize: 12, color: "rgba(186, 230, 186, 0.95)", marginBottom: 10 }}>Planos</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12 }}>
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: "rgba(186, 230, 186, 0.95)",
+                    marginBottom: 10,
+                  }}
+                >
+                  Planos
+                </div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                    gap: 12,
+                  }}
+                >
                   {plans.map((plan) => (
-                    <PlanCard key={plan.id} plan={plan} selected={selectedPlan} onSelect={setSelectedPlan} />
+                    <PlanCard
+                      key={plan.id}
+                      plan={plan}
+                      selected={selectedPlan}
+                      onSelect={setSelectedPlan}
+                    />
                   ))}
                 </div>
               </div>
@@ -215,11 +451,32 @@ export default function Cadastro({ onRegister }) {
                   letterSpacing: "0.03em",
                 }}
               >
-                Cadastrar <ArrowRight size={14} style={{ display: "inline", marginLeft: 6, verticalAlign: "-2px" }} />
+                Cadastrar{" "}
+                <ArrowRight
+                  size={14}
+                  style={{
+                    display: "inline",
+                    marginLeft: 6,
+                    verticalAlign: "-2px",
+                  }}
+                />
               </button>
 
-              <div style={{ textAlign: "center", fontSize: 12, color: "rgba(141, 189, 141, 0.92)" }}>
-                Já tem conta? <button type="button" onClick={() => navigate("/")} style={{ color: "#c9ffb9", fontWeight: 700 }}>Entrar</button>
+              <div
+                style={{
+                  textAlign: "center",
+                  fontSize: 12,
+                  color: "rgba(141, 189, 141, 0.92)",
+                }}
+              >
+                Já tem conta?{" "}
+                <button
+                  type="button"
+                  onClick={() => navigate("/")}
+                  style={{ color: "#c9ffb9", fontWeight: 700 }}
+                >
+                  Entrar
+                </button>
               </div>
             </form>
           </div>
