@@ -110,16 +110,16 @@ export default function Cadastro({ onRegister }) {
     <div
       style={{
         minHeight: "100vh",
-        padding: isMobile ? 12 : 30,
+        padding: isMobile ? 12 : 0,
         background:
           "radial-gradient(circle at top, rgba(30,90,30,0.35), transparent 36%), linear-gradient(135deg, #040904 0%, #0c160c 50%, #101f10 100%)",
       }}
     >
       <div
         style={{
-          minHeight: isMobile ? "calc(100vh - 24px)" : "calc(100vh - 60px)",
-          border: "1px solid rgba(40, 160, 60, 0.9)",
-          boxShadow: "0 0 0 1px rgba(0, 160, 255, 0.35)",
+          minHeight: isMobile ? "calc(100vh - 24px)" : "100vh",
+          border: isMobile ? "1px solid rgba(40, 160, 60, 0.9)" : "none",
+          boxShadow: isMobile ? "0 0 0 1px rgba(0, 160, 255, 0.35)" : "none",
           background:
             "linear-gradient(90deg, rgba(7,15,7,0.98) 0%, rgba(16,30,16,0.98) 50%, rgba(17,33,17,0.98) 100%)",
           display: "grid",
