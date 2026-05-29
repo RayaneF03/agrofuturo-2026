@@ -43,7 +43,7 @@ export default function Header({ onMenuClick }) {
     <header
       style={{
         minHeight: "var(--header-height)",
-        background: "var(--bg-secondary)",
+        background: "var(--bg-header)",
         borderBottom: "1px solid var(--border)",
         display: "flex",
         alignItems: "center",
@@ -71,7 +71,7 @@ export default function Header({ onMenuClick }) {
               alignItems: "center",
               justifyContent: "center",
               background: "var(--bg-input)",
-              color: "var(--text-secondary)",
+              color: "var(--header-icon-color)",
               border: "1px solid var(--border)",
               flexShrink: 0,
             }}
@@ -89,7 +89,7 @@ export default function Header({ onMenuClick }) {
               fontSize: isMobile ? 16 : 20,
               fontWeight: 700,
               letterSpacing: "0.04em",
-              color: "var(--text-primary)",
+              color: "var(--header-title-color)",
               lineHeight: 1.1,
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -102,7 +102,7 @@ export default function Header({ onMenuClick }) {
             <p
               style={{
                 fontSize: 11,
-                color: "var(--text-muted)",
+                color: "var(--header-subtitle-color)",
                 marginTop: 2,
                 letterSpacing: "0.02em",
               }}
@@ -137,7 +137,7 @@ export default function Header({ onMenuClick }) {
             alignItems: "center",
             justifyContent: "center",
             background: "var(--bg-input)",
-            color: "var(--text-secondary)",
+            color: "var(--header-icon-color)",
             border: "1px solid var(--border)",
             transition: "all var(--transition)",
           }}
@@ -158,7 +158,7 @@ export default function Header({ onMenuClick }) {
             alignItems: "center",
             justifyContent: "center",
             background: "var(--bg-input)",
-            color: "var(--text-secondary)",
+            color: "var(--header-icon-color)",
             border: "1px solid var(--border)",
             transition: "all var(--transition)",
           }}

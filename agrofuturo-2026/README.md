@@ -20,15 +20,15 @@
 
 ## ✨ Funcionalidades
 
-| Módulo | Descrição |
-|--------|-----------|
-| 📊 **Dashboard** | Visão geral da operação — KPIs, consumo semanal e status dos talhões em tempo real |
-| 💻 **Sensores** | Leitura ao vivo dos 24 sensores nos braços da pulverizadora com diagrama visual |
-| 🗺️ **Mapa do Campo** | Visualização geográfica dos talhões com progresso de pulverização por área |
-| 🐛 **Pragas** | Detecções automáticas por sensor — severidade, localização e controle de tratamento |
-| 💧 **Insumos** | Relatório de consumo de herbicida, fungicida e inseticida por talhão e período |
-| 🛒 **Vendas** | Painel comercial — receita, metas, modelos de sensores e clientes recentes |
-| ⚙️ **Configurações** | Parâmetros da pulverizadora, sensores e integração com a API C# |
+| Módulo               | Descrição                                                                           |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| 📊 **Dashboard**     | Visão geral da operação — KPIs, consumo semanal e status dos talhões em tempo real  |
+| 💻 **Sensores**      | Leitura ao vivo dos 24 sensores nos braços da pulverizadora com diagrama visual     |
+| 🗺️ **Mapa do Campo** | Visualização geográfica dos talhões com progresso de pulverização por área          |
+| 🐛 **Pragas**        | Detecções automáticas por sensor — severidade, localização e controle de tratamento |
+| 💧 **Insumos**       | Relatório de consumo de herbicida, fungicida e inseticida por talhão e período      |
+| 🛒 **Vendas**        | Painel comercial — receita, metas, modelos de sensores e clientes recentes          |
+| ⚙️ **Configurações** | Parâmetros da pulverizadora, sensores e integração com a API C#                     |
 
 ---
 
@@ -71,6 +71,10 @@ Acesse em: **http://localhost:5173**
 npm run build
 npm run preview
 ```
+
+### Conta de teste
+
+para testar entre com a conta admin2026@gmail.com e a senha: agrofuturo2026
 
 ---
 
@@ -132,9 +136,9 @@ Todos os dados estão mockados em `src/services/api.js`, prontos para substitui�
 ```js
 // src/services/api.js
 export const api = {
-  baseUrl: 'https://sua-api.com/v1', // ← altere aqui
+  baseUrl: "https://sua-api.com/v1", // ← altere aqui
   // ...
-}
+};
 ```
 
 ### Exemplo de substituição
@@ -163,15 +167,15 @@ async getDashboardStats() {
 
 ### Endpoints esperados
 
-| Método | Endpoint | Usado em |
-|--------|----------|----------|
-| `GET` | `/dashboard/stats` | Dashboard — KPIs |
-| `GET` | `/dashboard/consumo-semanal` | Dashboard — Gráfico |
-| `GET` | `/sensores` | Página de Sensores |
-| `GET` | `/pragas` | Página de Pragas |
-| `GET` | `/insumos/relatorio?periodo=7d` | Relatório de Insumos |
-| `GET` | `/vendas/sensores` | Painel de Vendas |
-| `GET` | `/campo/talhoes` | Mapa do Campo |
+| Método | Endpoint                        | Usado em             |
+| ------ | ------------------------------- | -------------------- |
+| `GET`  | `/dashboard/stats`              | Dashboard — KPIs     |
+| `GET`  | `/dashboard/consumo-semanal`    | Dashboard — Gráfico  |
+| `GET`  | `/sensores`                     | Página de Sensores   |
+| `GET`  | `/pragas`                       | Página de Pragas     |
+| `GET`  | `/insumos/relatorio?periodo=7d` | Relatório de Insumos |
+| `GET`  | `/vendas/sensores`              | Painel de Vendas     |
+| `GET`  | `/campo/talhoes`                | Mapa do Campo        |
 
 ---
 

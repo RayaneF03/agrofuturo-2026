@@ -37,7 +37,7 @@ export default function NotificationDropdown() {
           alignItems: "center",
           justifyContent: "center",
           background: isOpen ? "var(--accent-green)" : "var(--bg-input)",
-          color: isOpen ? "#fff" : "var(--text-secondary)",
+          color: isOpen ? "#fff" : "var(--header-icon-color)",
           border: "1px solid var(--border)",
           transition: "all 0.2s ease",
           cursor: "pointer",

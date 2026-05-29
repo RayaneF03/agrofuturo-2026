@@ -2,6 +2,13 @@
   /* Light theme */
   --bg-primary: #f4f6f0;
   --bg-secondary: #ffffff;
+  /* Header background specifically for light theme */
+  --bg-header: #1a2e1a;
+  /* Header text colors */
+  --header-title-color: #ffffff;
+  --header-subtitle-color: #78d841;
+  /* Header icons */
+  --header-icon-color: #132013;
   --bg-card: #ffffff;
   --bg-sidebar: #1a2e1a;
   --bg-sidebar-hover: #243824;
@@ -13,7 +20,7 @@
   --text-sidebar: #c8ddc8;
   --text-sidebar-active: #ffffff;
 
-  --border: #d4e0d0;
+  --border: #1e361e;
   --border-light: #e8f0e4;
 
   --accent-green: #3a9b3a;
@@ -45,6 +52,10 @@
 [data-theme="dark"] {
   --bg-primary: #0a140a;
   --bg-secondary: #0f1f0f;
+  --bg-header: var(--bg-secondary);
+  --header-title-color: var(--text-primary);
+  --header-subtitle-color: var(--text-muted);
+  --header-icon-color: var(--text-secondary);
   --bg-card: #132013;
   --bg-sidebar: #060e06;
   --bg-sidebar-hover: #0f1f0f;
