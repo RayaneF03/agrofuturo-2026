@@ -366,19 +366,22 @@ export default function SupportChatWidget() {
         <MessageCircle size={22} />
       </button>
 
-      {open && (isMobile ? mobilePopup : (
-        <Dialog
-          open={open}
-          title="Chat de suporte"
-          subtitle="Atendimento rápido para cadastro, telas e operação do sistema"
-          onClose={() => setOpen(false)}
-          maxWidth={460}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {chatContent}
-          </div>
-        </Dialog>
-      ))}
+      {open &&
+        (isMobile ? (
+          mobilePopup
+        ) : (
+          <Dialog
+            open={open}
+            title="Chat de suporte"
+            subtitle="Atendimento rápido para cadastro, telas e operação do sistema"
+            onClose={() => setOpen(false)}
+            maxWidth={460}
+          >
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {chatContent}
+            </div>
+          </Dialog>
+        ))}
     </>
   );
 }

@@ -61,7 +61,8 @@ export default function Dialog({
                 : "calc(100vh - 32px)",
           overflow: "hidden",
           background: "var(--bg-card)",
-          border: isMobile && fullScreenOnMobile ? "none" : "1px solid var(--border)",
+          border:
+            isMobile && fullScreenOnMobile ? "none" : "1px solid var(--border)",
           borderRadius:
             isMobile && fullScreenOnMobile ? 0 : isMobile ? "16px" : "20px",
           boxShadow:
