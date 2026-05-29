@@ -10,6 +10,7 @@ export default function Dialog({
   footer,
   onClose,
   maxWidth = 760,
+  fullScreenOnMobile = false,
 }) {
   const isMobile = useIsMobile();
 
@@ -40,25 +41,43 @@ export default function Dialog({
         display: "flex",
         alignItems: isMobile ? "stretch" : "center",
         justifyContent: "center",
-        padding: isMobile ? 8 : 16,
+        padding: isMobile && fullScreenOnMobile ? 0 : isMobile ? 8 : 16,
       }}
     >
       <div
         style={{
-          width: isMobile ? "100%" : `min(${maxWidth}px, calc(100vw - 32px))`,
-          maxHeight: isMobile ? "calc(100vh - 16px)" : "calc(100vh - 32px)",
+          width:
+            isMobile && fullScreenOnMobile
+              ? "100%"
+              : isMobile
+                ? "100%"
+                : `min(${maxWidth}px, calc(100vw - 32px))`,
+          height: isMobile && fullScreenOnMobile ? "100dvh" : undefined,
+          maxHeight:
+            isMobile && fullScreenOnMobile
+              ? "100dvh"
+              : isMobile
+                ? "calc(100vh - 16px)"
+                : "calc(100vh - 32px)",
           overflow: "hidden",
           background: "var(--bg-card)",
-          border: "1px solid var(--border)",
-          borderRadius: isMobile ? "16px" : "20px",
-          boxShadow: "var(--shadow-lg)",
+          border: isMobile && fullScreenOnMobile ? "none" : "1px solid var(--border)",
+          borderRadius:
+            isMobile && fullScreenOnMobile ? 0 : isMobile ? "16px" : "20px",
+          boxShadow:
+            isMobile && fullScreenOnMobile ? "none" : "var(--shadow-lg)",
           display: "flex",
           flexDirection: "column",
         }}
       >
         <div
           style={{
-            padding: isMobile ? "14px 16px" : "18px 20px",
+            padding:
+              isMobile && fullScreenOnMobile
+                ? "16px"
+                : isMobile
+                  ? "14px 16px"
+                  : "18px 20px",
             borderBottom: "1px solid var(--border-light)",
             display: "flex",
             justifyContent: "space-between",
@@ -114,14 +133,25 @@ export default function Dialog({
           </button>
         </div>
 
-        <div style={{ padding: isMobile ? 16 : 20, overflowY: "auto" }}>
+        <div
+          style={{
+            padding: isMobile && fullScreenOnMobile ? 16 : isMobile ? 16 : 20,
+            overflowY: "auto",
+            flex: 1,
+          }}
+        >
           {children}
         </div>
 
         {footer && (
           <div
             style={{
-              padding: isMobile ? "14px 16px" : "16px 20px",
+              padding:
+                isMobile && fullScreenOnMobile
+                  ? "14px 16px"
+                  : isMobile
+                    ? "14px 16px"
+                    : "16px 20px",
               borderTop: "1px solid var(--border-light)",
             }}
           >
