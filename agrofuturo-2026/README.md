@@ -1,238 +1,299 @@
-<div align="center">
+# 🌱 AgroFuturo 2026
 
-```
-   ╔═══════════════════════════════════════╗
-   ║   🌱  A G R O F U T U R O  🚜         ║
-   ║   Sistema de Pulverização de Precisão ║
-   ╚═══════════════════════════════════════╝
-```
+## 📖 Descrição do Projeto
 
-[![React](https://img.shields.io/badge/React-18.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.1-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![React Router](https://img.shields.io/badge/React_Router-6.22-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
-[![Recharts](https://img.shields.io/badge/Recharts-2.12-22B5BF?style=flat-square)](https://recharts.org/)
+O AgroFuturo 2026 é uma plataforma web desenvolvida para auxiliar produtores rurais e profissionais do agronegócio no acesso a informações relevantes para a gestão agrícola. O sistema foi construído utilizando React com Vite no frontend e uma API REST desenvolvida em C# (.NET) no backend.
 
-> **Frontend React + Vite** para monitoramento em tempo real da pulverizadora **John Deere R4045** — leitura de sensores, detecção de pragas, controle de insumos e dashboard comercial.
-
-</div>
+O projeto integra uma API própria para gerenciamento de dados e também consome informações da BrasilAPI para fornecer dados externos de interesse aos usuários.
 
 ---
 
-## ✨ Funcionalidades
+# 🎯 Objetivo
 
-| Módulo               | Descrição                                                                           |
-| -------------------- | ----------------------------------------------------------------------------------- |
-| 📊 **Dashboard**     | Visão geral da operação — KPIs, consumo semanal e status dos talhões em tempo real  |
-| 💻 **Sensores**      | Leitura ao vivo dos 24 sensores nos braços da pulverizadora com diagrama visual     |
-| 🗺️ **Mapa do Campo** | Visualização geográfica dos talhões com progresso de pulverização por área          |
-| 🐛 **Pragas**        | Detecções automáticas por sensor — severidade, localização e controle de tratamento |
-| 💧 **Insumos**       | Relatório de consumo de herbicida, fungicida e inseticida por talhão e período      |
-| 🛒 **Vendas**        | Painel comercial — receita, metas, modelos de sensores e clientes recentes          |
-| ⚙️ **Configurações** | Parâmetros da pulverizadora, sensores e integração com a API C#                     |
+Desenvolver uma aplicação web moderna que integre um frontend em React com uma API desenvolvida em C# (.NET), aplicando conceitos de autenticação, consumo de APIs, integração com banco de dados e deploy em ambiente de produção.
 
 ---
 
-## 🎨 Tema
+# 🛠️ Tecnologias Utilizadas
 
-O sistema suporta **dark mode** e **light mode** com alternância em tempo real, preferência salva automaticamente no `localStorage`.
+## Frontend
 
-```
-🌑 Dark Mode  →  tema padrão, fundo verde-escuro profundo
-☀️ Light Mode →  fundo claro, sidebar verde-escura
-```
+- React
+- Vite
+- JavaScript
+- HTML5
+- CSS3
+- Axios
+- Vercel
+
+## Backend
+
+- C# (.NET)
+- ASP.NET Core Web API
+- Entity Framework Core
+- JWT Authentication
+- Scalar API Documentation
+
+## Banco de Dados
+
+- Supabase (PostgreSQL)
+
+## APIs Externas
+
+- BrasilAPI
+  - https://brasilapi.com.br/docs
+
+## Design
+
+- Figma
 
 ---
 
-## 🚀 Instalação
+# 📂 Repositórios e Links
 
-### Pré-requisitos
+## Frontend
 
-- [Node.js](https://nodejs.org/) **v18+**
-- npm ou yarn
+### Repositório GitHub
 
-### Passos
+https://github.com/RayaneF03/agrofuturo-2026
+
+### Aplicação Hospedada (Vercel)
+
+https://agrofuturo-2026.vercel.app/
+
+---
+
+## Backend
+
+### Repositório GitHub
+
+https://github.com/Ricci201/AGRObck
+
+### Banco de Dados (Supabase)
+
+https://dxmumysmaemstzdfeauv.supabase.co
+
+### API Publicada
+
+**Inserir URL da API publicada com Scalar habilitado**
+
+Exemplo:
+https://sua-api.com/scalar
+
+---
+
+## Protótipo
+
+### Figma
+
+https://www.figma.com/design/nmOvLwWQTnq0YGKOlNVxgc/Untitled?t=TFbOIi8jl7bHds0l-1
+
+---
+
+# ⚙️ Como Executar o Projeto Localmente
+
+## Acesso de Demonstração
+
+Para facilitar a avaliação do professor, use as credenciais abaixo no login:
+
+- E-mail: admin2026@gmail.com
+- Senha: 12345678
+
+## 1. Clonar o Frontend
 
 ```bash
-# 1. Entre na pasta do projeto
-cd agrofuturo-clean
+git clone https://github.com/RayaneF03/agrofuturo-2026.git
+```
 
-# 2. Instale as dependências
+```bash
+cd agrofuturo-2026
+```
+
+```bash
 npm install
+```
 
-# 3. Inicie o servidor de desenvolvimento
+```bash
 npm run dev
 ```
 
-Acesse em: **http://localhost:5173**
-
-### Build para produção
+Aplicação disponível em:
 
 ```bash
-npm run build
-npm run preview
-```
-
-### Conta de teste
-
-para testar entre com a conta admin2026@gmail.com e a senha: agrofuturo2026
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-agrofuturo-clean/
-│
-├── 📂 public/
-│   └── vite.svg                  # Favicon
-│
-├── 📂 src/
-│   │
-│   ├── 📂 assets/                # Imagens e recursos estáticos
-│   │
-│   ├── 📂 components/
-│   │   ├── 📂 layout/
-│   │   │   ├── Header.jsx        # Barra superior com toggle de tema
-│   │   │   ├── Layout.jsx        # Wrapper com Sidebar + Header + Outlet
-│   │   │   └── Sidebar.jsx       # Menu lateral com navegação e status do trator
-│   │   └── 📂 ui/
-│   │       └── index.jsx         # Card, StatCard, Badge, ProgressBar, SectionHeader...
-│   │
-│   ├── 📂 context/
-│   │   └── ThemeContext.jsx      # Gerenciamento dark/light mode
-│   │
-│   ├── 📂 hooks/                 # Hooks customizados (expansão futura)
-│   │
-│   ├── 📂 pages/
-│   │   ├── 📂 Dashboard/         # Visão geral e KPIs
-│   │   ├── 📂 Sensores/          # Grid de sensores + diagrama do trator
-│   │   ├── 📂 Mapa/              # Mapa visual dos talhões
-│   │   ├── 📂 Pragas/            # Lista e detalhe de pragas detectadas
-│   │   ├── 📂 Insumos/           # Relatórios de consumo
-│   │   ├── 📂 Vendas/            # Painel comercial de sensores
-│   │   └── 📂 Configuracoes/     # Parâmetros do sistema
-│   │
-│   ├── 📂 services/
-│   │   └── api.js                # Camada de dados — mock pronto para API C#
-│   │
-│   ├── App.jsx                   # Rotas da aplicação
-│   ├── index.css                 # Variáveis CSS globais e tema
-│   └── main.jsx                  # Entry point React
-│
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
+http://localhost:5173
 ```
 
 ---
 
-## 🔌 Integração com API C\#
+## 2. Clonar o Backend
 
-Todos os dados estão mockados em `src/services/api.js`, prontos para substituição pelas chamadas reais ao seu backend.
-
-### Configuração
-
-```js
-// src/services/api.js
-export const api = {
-  baseUrl: "https://sua-api.com/v1", // ← altere aqui
-  // ...
-};
+```bash
+git clone https://github.com/Ricci201/AGRObck.git
 ```
 
-### Exemplo de substituição
-
-```js
-// ANTES (mock)
-async getDashboardStats() {
-  return {
-    insumoHoje: 342.5,
-    hectaresHoje: 48.3,
-    // ...
-  }
-}
-
-// DEPOIS (API C# real)
-async getDashboardStats() {
-  const res = await fetch(`${this.baseUrl}/dashboard/stats`, {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': 'application/json',
-    }
-  })
-  return await res.json()
-}
+```bash
+cd AGRObck
 ```
 
-### Endpoints esperados
+Restaurar dependências:
 
-| Método | Endpoint                        | Usado em             |
-| ------ | ------------------------------- | -------------------- |
-| `GET`  | `/dashboard/stats`              | Dashboard — KPIs     |
-| `GET`  | `/dashboard/consumo-semanal`    | Dashboard — Gráfico  |
-| `GET`  | `/sensores`                     | Página de Sensores   |
-| `GET`  | `/pragas`                       | Página de Pragas     |
-| `GET`  | `/insumos/relatorio?periodo=7d` | Relatório de Insumos |
-| `GET`  | `/vendas/sensores`              | Painel de Vendas     |
-| `GET`  | `/campo/talhoes`                | Mapa do Campo        |
-
----
-
-## 🧩 Componentes Reutilizáveis
-
-Todos em `src/components/ui/index.jsx`:
-
-```jsx
-import { Card, StatCard, Badge, ProgressBar, SectionHeader } from '../../components/ui'
-
-// Card base
-<Card style={{ padding: 20 }}>conteúdo</Card>
-
-// Cartão de KPI com ícone, valor e variação
-<StatCard
-  icon={Droplets}
-  label="Insumo Hoje"
-  value="342"
-  unit="L"
-  delta={4.2}
-  color="var(--accent-blue)"
-/>
-
-// Badge de status
-<Badge variant="success" label="Ativo" />
-<Badge variant="warning" label="Alerta" />
-<Badge variant="danger"  label="Crítico" />
-
-// Barra de progresso
-<ProgressBar value={75} max={100} color="var(--accent-green)" />
+```bash
+dotnet restore
 ```
 
----
+Executar projeto:
 
-## 🛠️ Tecnologias
+```bash
+dotnet run
+```
 
-- **[React 18](https://reactjs.org/)** — UI declarativa com hooks
-- **[Vite 5](https://vitejs.dev/)** — bundler ultrarrápido
-- **[React Router 6](https://reactrouter.com/)** — roteamento SPA
-- **[Recharts](https://recharts.org/)** — gráficos de área, barras e linhas
-- **[Lucide React](https://lucide.dev/)** — ícones SVG
-- **CSS Variables** — sistema de temas dark/light sem dependência externa
+A API será disponibilizada na porta configurada no projeto.
 
 ---
 
-## 📋 Roadmap
+# 🚀 Deploy
 
-- [ ] Autenticação JWT com a API C#
-- [ ] Mapa real com Leaflet / Google Maps
-- [ ] Notificações push de pragas em tempo real (WebSocket)
-- [ ] Exportação de relatórios em PDF
-- [ ] App mobile (React Native)
+## Frontend (Vercel)
+
+1. Conectar o repositório GitHub à Vercel.
+2. Selecionar o framework Vite.
+3. Configurar as variáveis de ambiente.
+4. Realizar o deploy.
 
 ---
 
-<div align="center">
+## Backend (.NET)
 
-Desenvolvido para o projeto **AgroFuturo** 🌱
+1. Publicar a API em um serviço compatível com ASP.NET Core.
+2. Configurar variáveis de ambiente.
+3. Habilitar documentação Scalar.
+4. Configurar conexão com o banco Supabase.
+5. Realizar publicação.
 
-</div>
+---
+
+# 🔐 Autenticação e Autorização
+
+A API possui autenticação baseada em JWT (JSON Web Token), permitindo:
+
+- Cadastro de usuários.
+- Login seguro.
+- Controle de acesso a rotas protegidas.
+- Autorização baseada em permissões.
+
+---
+
+# 🔄 Consumo de APIs
+
+## API Própria
+
+O frontend realiza requisições para a API desenvolvida em C# para:
+
+- Autenticação de usuários.
+- Gerenciamento de dados agrícolas.
+- Consulta e cadastro de informações.
+
+## API Externa
+
+O sistema também consome dados da BrasilAPI:
+
+https://brasilapi.com.br/docs
+
+Exemplos de utilização:
+
+- Consulta de CEP.
+- Informações regionais.
+- Dados públicos disponibilizados pela API.
+
+---
+
+# 📋 Requisitos Funcionais
+
+| ID   | Requisito Funcional                                                 | Prioridade |
+| ---- | ------------------------------------------------------------------- | ---------- |
+| RF01 | O sistema deve permitir cadastro de usuários.                       | Alta       |
+| RF02 | O sistema deve permitir autenticação via login.                     | Alta       |
+| RF03 | O sistema deve permitir atualização de dados do usuário.            | Média      |
+| RF04 | O sistema deve permitir consulta de informações agrícolas.          | Alta       |
+| RF05 | O sistema deve consumir dados da BrasilAPI.                         | Alta       |
+| RF06 | O sistema deve permitir acesso a áreas protegidas por autenticação. | Alta       |
+| RF07 | O sistema deve permitir integração com banco de dados Supabase.     | Alta       |
+| RF08 | O sistema deve exibir informações em interface responsiva.          | Média      |
+| RF09 | O sistema deve registrar dados através da API própria.              | Alta       |
+| RF10 | O sistema deve permitir logout do usuário.                          | Média      |
+
+---
+
+# 🗄️ Diagrama DML
+
+## Entidades Principais
+
+### Usuário
+
+| Campo        | Tipo     |
+| ------------ | -------- |
+| Id           | Integer  |
+| Nome         | String   |
+| Email        | String   |
+| Senha        | String   |
+| DataCadastro | DateTime |
+
+### Propriedade
+
+| Campo       | Tipo    |
+| ----------- | ------- |
+| Id          | Integer |
+| Nome        | String  |
+| Localizacao | String  |
+| AreaCultivo | Decimal |
+
+### Produção
+
+| Campo         | Tipo     |
+| ------------- | -------- |
+| Id            | Integer  |
+| Produto       | String   |
+| Quantidade    | Decimal  |
+| DataRegistro  | DateTime |
+| PropriedadeId | Integer  |
+
+---
+
+# ✨ Funcionalidades Implementadas
+
+- Cadastro de usuários.
+- Login com autenticação JWT.
+- Integração com API própria em C#.
+- Integração com BrasilAPI.
+- Interface responsiva.
+- Consumo de banco Supabase.
+- Deploy em produção utilizando Vercel.
+- Documentação da API via Scalar.
+
+---
+
+# 📸 Evidências de Funcionamento
+
+Adicionar capturas de tela do sistema em execução.
+
+Exemplo:
+
+- Tela inicial
+- Login
+- Dashboard
+- Consumo da API
+- Integração com BrasilAPI
+
+---
+
+# 👥 Equipe
+
+Projeto desenvolvido para a disciplina de Desenvolvimento Web e APIs.
+
+---
+
+# 📅 Entrega
+
+Prazo de entrega: 11/06/2025
+
+Todos os links foram organizados neste README para facilitar a avaliação do projeto.
